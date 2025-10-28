@@ -8,4 +8,9 @@ module.exports = (router) => {
     await validator.create(req)
     await controller.create(req, res)
   })
+
+  router.get('/user/:id/notes', async (req, res) => {
+    await auth.requiresCurrentUser(req)
+    await controller.find(req, res)
+  })
 }
